@@ -20,8 +20,17 @@ function startBackendServer(port) {
     var s_whiteboard = require("./s_whiteboard.js");
 
     var app = express();
+    
+    const key = '/certs/7650197_webrtc.habipet.com.key';
+    const certificate = '/certs/7650197_webrtc.habipet.com_public.crt';
 
-    var server = require("http").Server(app);
+    const options = {
+        rejectUnauthorized: false,
+        key: fs.readFileSync(key),
+        cert: fs.readFileSync(certificate),
+    };
+
+    var server = require("https").createServer(options, app);
     server.listen(port);
     var io = require("socket.io")(server, { path: "/ws-api" });
     WhiteboardInfoBackendService.start(io);
