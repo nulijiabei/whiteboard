@@ -16,6 +16,7 @@ const pdfjsLib = require("pdfjs-dist");
 const urlParams = new URLSearchParams(window.location.search);
 let whiteboardId = urlParams.get("whiteboardid");
 const randomid = urlParams.get("randomid");
+const toolbar = urlParams.get("toolbar");
 
 if (randomid) {
     whiteboardId = uuidv4();
@@ -568,6 +569,8 @@ function initWhiteboard() {
                 }
                 btnsMini = !btnsMini;
             });
+        if (toolbar === "hide")
+            $("#toolbar").find(".btn-group:not(.minGroup)").hide();
 
         // load json to whiteboard
         $("#myFile").on("change", function () {
