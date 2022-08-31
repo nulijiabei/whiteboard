@@ -21,8 +21,8 @@ function startBackendServer(port) {
 
     var app = express();
     
-    const key = '/certs/7650197_webrtc.habipet.com.key';
-    const certificate = '/certs/7650197_webrtc.habipet.com_public.crt';
+    const key = '/home/dai/mediasoup-nljb/server/certs/7650197_webrtc.habipet.com.key';
+    const certificate = '/home/dai/mediasoup-nljb/server/certs/7650197_webrtc.habipet.com_public.crt';
 
     const options = {
         rejectUnauthorized: false,
